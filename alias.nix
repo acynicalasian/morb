@@ -1,0 +1,8 @@
+{
+  l = "ls -alh";
+  ll = "ls -l";
+  ls = "ls --color=tty";
+  cls = "ls -ahl --color=always";
+  xls = "cls | less -R";
+  cless = "less -R";
+}
