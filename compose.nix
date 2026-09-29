@@ -1,6 +1,11 @@
 # For packages not managed by home-manager.
 
-{ config, pkgs, modulesPath, ... }:
+{
+  config,
+  pkgs,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [
@@ -18,5 +23,8 @@
 
   programs.fish.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

@@ -13,22 +13,31 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, home-manager, emacs-overlay, ... } @ inputs:
-  {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem { # `nixos` refers to my <HOSTNAME>
-      system = builtins.currentSystem;
-      specialArgs = { inherit inputs; };
-      modules = [
-        { nixpkgs.overlays = [ emacs-overlay.overlays.default ]; }
-        ./compose.nix
-	      home-manager.nixosModules.home-manager {
-	        home-manager.useGlobalPkgs = true;
-	        home-manager.useUserPackages = true;
-	        home-manager.users.akim = import ./home.nix;
-	        # My config intends to declare _everything_. 
-	        home-manager.backupCommand = "rm";
-	      }
-      ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      emacs-overlay,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        # `nixos` refers to my <HOSTNAME>
+        system = builtins.currentSystem;
+        specialArgs = { inherit inputs; };
+        modules = [
+          { nixpkgs.overlays = [ emacs-overlay.overlays.default ]; }
+          ./compose.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.akim = import ./home.nix;
+            # My config intends to declare _everything_.
+            home-manager.backupCommand = "rm";
+          }
+        ];
+      };
     };
-  };
 }
