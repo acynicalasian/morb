@@ -18,8 +18,9 @@
     (setq scroll-preserve-screen-position 'always)
     (use-package lsp-ui)
     (require 'lsp-mode)
+    (require 'lsp-ui-doc)
     (require 'nixfmt)
-    (lsp-ui-doc-enable)
+    (lsp-ui-doc-enable t)
     (lsp-ui-doc-position at-point)
     (lsp-ui-doc-show-with-mouse t)
     (lsp-headerline-breadcrumb-mode t)
@@ -57,3 +58,4 @@
     nixfmt
   ];
 }
+<
