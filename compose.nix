@@ -8,7 +8,8 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    deno
+    nil
+    nixfmt
   ];
 
   environment.shellAliases = import ./alias.nix;
