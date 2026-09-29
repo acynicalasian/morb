@@ -7,14 +7,20 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay/master";
+      # Follow stable nixos-26.05 instead of their default to unstable.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, emacs-overlay, ... } @ inputs:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem { # `nixos` refers to my <HOSTNAME>
         system = "aarch64-linux"; # hardcode to allow pure eval; also this is for my Orbstack
                                   # NixOS VM
 
         specialArgs = { inherit inputs; };
+        pkgs = nixpkgs.legacyPackages.aarch64-linux.extend emacs-overlay.overlays.default;
         modules = [
           ./compose.nix
 	  home-manager.nixosModules.home-manager {

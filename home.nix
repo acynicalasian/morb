@@ -9,7 +9,15 @@
       enableFishIntegration = true;
       # enableGitIntegration = true;
     };
-    emacs = import ./emacs.nix;
+    emacs = {
+      enable = true;
+      package = pkgs.emacsWithPackagesFromUsePackage {
+        package = pkgs.emacs;
+        config = ./emacs.el;
+        defaultInitFile = true;
+        alwaysEnsure = true;
+      };
+    };
     git = {
       enable = true;
       includes = [
