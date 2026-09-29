@@ -9,4 +9,6 @@
   merge.conflictStyle = "zdiff3";
   diff.algorithm = "histogram";
   core.editor = "emacs";
+  user.name = "Arthur Kim";
+  user.email = "arthur.kim@ucla.edu";
 }
