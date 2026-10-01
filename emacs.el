@@ -1,8 +1,12 @@
 ;;; emacs.el --- -*- lexical-binding: t; -*-
 
-;; Basic UI
+;; Basic emacs prefs
 (global-display-line-numbers-mode t)
+(global-display-fill-column-indicator-mode t)
 (column-number-mode t)
+(auto-fill-mode t)
+(set-fill-column 80)
+(electric-pair-mode t)
 
 ;; Mouse: wheel direction is flipped for macOS-style scrolling
 (mouse-wheel-mode t)
@@ -41,7 +45,7 @@
                  (display-buffer-in-side-window)
                  (side . bottom)
                  (slot . 0)
-                 (window-height . 0.25)
+                 (window-height . 0.15)
                  (window-parameters . ((no-other-window . t)
                                        (no-delete-other-windows . t))))))
 
