@@ -81,7 +81,7 @@
         "completion"
       ];
       defaultKeymap = "emacs";
-      fastSyntaxHighlighting.enable = true;
+      syntaxHighlighting.enable = true;
       history = {
         append = true;
         expireDuplicatesFirst = true;

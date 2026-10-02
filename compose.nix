@@ -23,7 +23,7 @@
 
   users.defaultUserShell = pkgs.zsh;
 
-  # programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   nix.settings.experimental-features = [
     "nix-command"
