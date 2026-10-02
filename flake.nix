@@ -12,6 +12,10 @@
       # Follow stable nixos-26.05 instead of their default to unstable.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -19,6 +23,7 @@
       nixpkgs,
       home-manager,
       emacs-overlay,
+      nix-index-database,
       ...
     }@inputs:
     {
@@ -34,8 +39,8 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.akim = import ./home.nix;
-            # My config intends to declare _everything_.
-            home-manager.backupCommand = "rm";
+            home-manager.backupFileExtension = "bak";
+            home-manager.sharedModules = [ nix-index-database.homeModules.nix-index ];
           }
         ];
       };

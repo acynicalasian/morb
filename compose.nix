@@ -19,9 +19,11 @@
 
   environment.shellAliases = import ./alias.nix;
 
-  users.defaultUserShell = pkgs.fish;
+  environment.pathsToLink = [ "/share/zsh" ];
 
-  programs.fish.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
+  # programs.fish.enable = true;
 
   nix.settings.experimental-features = [
     "nix-command"
