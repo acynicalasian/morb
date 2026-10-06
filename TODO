@@ -1,2 +1,7 @@
-- Consider breaking up home.nix into further subfiles as it's gotten fucking fat.
+- Consider breaking up home.nix into further subfiles as it's gotten
+  fucking fat.
   - Worth doing the whole module.nix and default.nix shit?
+
+- I should also consider parametrizing my code so that I can simply
+  run an initial script (a la start.sh). We accept impurity here for
+  convenience.
