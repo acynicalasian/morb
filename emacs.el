@@ -1,5 +1,10 @@
 ;;; emacs.el --- -*- lexical-binding: t; -*-
 
+;;; Commentary:
+;; hi linter, fuck off.
+
+;;; Code:
+
 ;; Basic emacs prefs
 (global-display-line-numbers-mode t)
 (global-display-fill-column-indicator-mode t)
@@ -89,4 +94,7 @@
 
 ;; Nix
 (use-package nix-mode)
-(use-package nixfmt)
+(use-package nixfmt
+  :hook (nix-mode . nixfmt-on-save-mode))
+
+;;; emacs.el ends here
